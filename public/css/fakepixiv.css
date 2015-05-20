@@ -1,0 +1,29 @@
+div.image{
+  margin: 0 auto;
+}
+
+img.illust{
+  margin: 0 auto;
+  width: 200px;
+  height: 250px;
+  float: left;
+}
+
+div.container{
+  width: 1100px;
+  overflow: auto;
+  align: center;
+}
+
+div.contents{
+  width: 1100px;
+  overflow: auto;
+}
+
+.add-star:before{
+  content: "★"; color: yellow;
+}
+
+.add-star{
+  cursor: pointer;
+}

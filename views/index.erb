@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- If you delete this tag, the sky will fall on your head -->
+<script src="js/jquery.js"></script>
+<script src="/js/main.js"></script>
+
+<meta name="viewport" content="width=device-width" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>fakepixiv</title>
+
+<link rel="stylesheet" type="text/css" href="/css/fakepixiv.css" />
+
+</head>
+<!-- HEADER -->
+<body bgcolor="#FFFFFF">
+
+<div class="container">
+<a>ただいまの時間：</a> <%= Time.now %>
+
+<div class="image" margin: 0 auto;>
+	<img src="/uploads/painting02.jpg" width="350" height="100"/>
+</div>
+<!-- /HEADER -->
+
+
+<!-- BODY -->
+			<!-- コンテンツ -->
+			<!-- liに変更 -->
+<div class="contents">
+
+<ul class="image_item" style="list-style:none">
+	<% @posts.reverse.each do |posts| %>
+	<li class = "image_piece" style="float:left">
+		<table align="center">
+			<tr>
+				<td>
+					<p id="title">
+					<% if posts['text']=="" || posts['text']==nil then %>
+					Non Title
+					<% else %>
+					<%= posts['text'] %>
+					<% end %>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<% if posts['img_file_name']==nil %>
+					<p><img class="illust" src=http://placehold.jp/24/200x250.png?text=No%20image></p><br>
+					<% else %>
+					<p><img class="illust" src=/uploads/<%= posts['img_file_name'] %> ></p><br>
+					<% end %>
+					<div class="tools">
+						<span class = "add-star" data-post-id = "<%= posts["id"] %>" id = "<%= posts["id"] %>" >
+							<%= posts["star_count"] %>
+						</span>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</li>
+ <% end %>
+</ul>
+<!-- liに変更部分終わり -->
+</div>
+
+
+<br/>
+<br/>
+<p>投稿エリア</p>
+<form method = "post" id="ex_form" action="/" enctype="multipart/form-data">
+	<textarea name = "ex_text" id="ex_text"></textarea>
+	<input type="file" name="file" value="file">
+	<input type = "submit" name = "submit" value = "submit">
+</form>
+<!-- /BODY -->
+
+<!-- FOOTER -->
+<table class="footer-wrap">
+	<tr>
+		<td></td>
+		<td class="container">
+
+				<!-- content -->
+				<div class="content">
+				<table>
+				<tr>
+					<td align="center">
+						<p>
+							<a href="#" target = "_blank">トップに戻る</a> |
+							<a href="https://twitter.com/" target = _"blank">Twitterをする</a> |
+							<a href="http://www.pixiv.net/" target = "_blank">本物のpixivへ行く</a>
+						</p>
+					</td>
+				</tr>
+			</table>
+				</div><!-- /content -->
+
+		</td>
+		<td></td>
+	</tr>
+</table><!-- /FOOTER -->
+</div>
+</body>
+</html>
